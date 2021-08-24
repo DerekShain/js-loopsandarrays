@@ -4,6 +4,10 @@
 // output: ['is', 'a', 'split', 'sentence.', 'This']
 
 function rearranger(arr) {
+    var begin = arr[0];
+    arr.shift();
+    arr.push(begin);
+    return arr;
 }
 
 
@@ -16,7 +20,8 @@ function rearranger(arr) {
 // output: 42
 
 function largestNum(arr) {
-}
+  return (Math.max(...arr))
+    }
 
 
 // ------------------------------------------
@@ -28,6 +33,11 @@ function largestNum(arr) {
 // output: [16, 8, 4, 28]
 
 function elemsTimesLength(arr) {
+    let sum = []
+    for (let i = 0; i<= arr.length; i++){
+        sum.push(arr[i]*arr.length);
+    }
+    return sum
 }
 
 
@@ -63,7 +73,12 @@ let flights = [{
 
 function flightCost(destination, firstClass) {
     //***hint: use the find method***
-
+    let trip=flights.find(flight => flight.to == destination.toUpperCase())
+    if (firstClass){
+        return trip.prices.firstClass
+    }else{
+        return trip.prices.standard
+    }
 }
 
 
@@ -84,7 +99,15 @@ let staff = [{ id: 1, name: 'Jon' }, { id: 2, name: 'Yuli' }, { id: 21, name: 'P
 { id: 881, name: 'Paul' }, { id: 0, name: 'Jon' }, { id: 999, name: 'Timma' }]
 
 function findById(id) {
+    for (let i = 0; i < staff.length; i++) {
 
+        if (staff[i].id == id) {
+            return staff[i]
+        } else {}
+    }
+    return {
+        error: "No user with that id."
+    }
 }
 
 
@@ -111,4 +134,6 @@ let theBand = {
 }
 
 function bandMemberDetails(name) {
+    let bandMember = theBand.members.find(member => member.name.includes(name))
+    return `${bandMember.name} is in the band and plays the ${bandMember.instrument}`
 }
